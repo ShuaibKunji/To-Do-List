@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<h1>This page is using the base template</h1>
+<h1>Tasks</h1>
 {% endblock %}
 
 {% block body %}
-Hello World!
+<div>
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Date & Time of Creation/Modification</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="">Delete task</a>
+                <br>
+                <a href="">Update/modify task</a>
+            </td>
+        </tr>
+    </table>
+</div>
 {% endblock %}
