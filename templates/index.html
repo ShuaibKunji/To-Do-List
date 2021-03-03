@@ -13,10 +13,10 @@
             <th>Date & Time of Creation/Modification</th>
             <th>Actions</th>
         </tr>
-        {% for item in tasks %}
+        {% for task in tasks %}
             <tr>
-                <td>{{ item.task }}</td>
-                <td>{{ item.date }}</td>
+                <td>{{ task.task }}</td>
+                <td>{{ task.date }}</td>
                 <td>
                     <a href="">Delete task</a>
                     <br>

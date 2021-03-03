@@ -19,6 +19,7 @@ def index():
     if request.method == 'POST':
         task_item = request.form['task']
         new_task = Todo(task = task_item)
+
         try:
             db.session.add(new_task)
             db.session.commit()
