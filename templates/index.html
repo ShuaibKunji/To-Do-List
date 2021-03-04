@@ -2,11 +2,11 @@
 
 {% block head %}
 <title>To-Do List</title>
-<h1>Tasks</h1>
+<h1 style="text-align: center;">Tasks</h1>
 {% endblock %}
 
 {% block body %}
-<div class="content">
+<div class="content" align="center">
     <table id="tbl">
         <tr>
             <th>Task</th>
@@ -25,7 +25,7 @@
             </tr>
         {% endfor %}
     </table>
-    <form action="/" method="post">
+    <form style="margin-top: 20px;" action="/" method="post">
         <input type="text" name="task" id="task">
         <input type="submit" value="Add task">
     </form>
