@@ -46,12 +46,13 @@ def update(id):
     utask = Todo.query.get_or_404(id)
     if request.method == 'POST':
         utask.task = request.form['task']
+        utask.date = datetime.now()
 
         try:
             db.session.commit()
             return redirect('/')
         except:
-            return 'Task could not be update. Please retry.'
+            return 'Task could not be updated. Please retry.'
     else:
         return render_template('update.html', task = utask)
 
