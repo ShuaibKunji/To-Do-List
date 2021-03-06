@@ -39,7 +39,21 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
-        return 'There was an error deleting that task. Please retry.'
+        return 'Task could not be deleted. Please retry.'
+
+@app.route('/update/<int:id>', methods = ['GET','POST'])
+def update(id):
+    utask = Todo.query.get_or_404(id)
+    if request.method == 'POST':
+        utask.task = request.form['task']
+
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Task could not be update. Please retry.'
+    else:
+        return render_template('update.html', task = utask)
 
 if __name__=="__main__":
     app.run(debug=True)
