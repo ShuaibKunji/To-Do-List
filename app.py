@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(200), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.now)
+    dateTime = db.Column(db.DateTime, default=datetime.now)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -47,7 +47,7 @@ def update(id):
     if request.method == 'POST':
         if utask.task != request.form['task']:
             utask.task = request.form['task']
-            utask.date = datetime.now()
+            utask.dateTime = datetime.now()
 
             try:
                 db.session.commit()
