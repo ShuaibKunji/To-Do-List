@@ -27,7 +27,7 @@ def index():
         except:
             return 'The task could not be added. Please retry.'        
     else:
-        tasks = Todo.query.order_by(Todo.date).all()
+        tasks = Todo.query.order_by(Todo.id).all()
         return render_template("index.html", tasks=tasks)
 
 @app.route('/delete/<int:id>')
@@ -45,14 +45,17 @@ def delete(id):
 def update(id):
     utask = Todo.query.get_or_404(id)
     if request.method == 'POST':
-        utask.task = request.form['task']
-        utask.date = datetime.now()
+        if utask.task != request.form['task']:
+            utask.task = request.form['task']
+            utask.date = datetime.now()
 
-        try:
-            db.session.commit()
+            try:
+                db.session.commit()
+                return redirect('/')
+            except:
+                return 'Task could not be updated. Please retry.'
+        else:
             return redirect('/')
-        except:
-            return 'Task could not be updated. Please retry.'
     else:
         return render_template('update.html', task = utask)
 
